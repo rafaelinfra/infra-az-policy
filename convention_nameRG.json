@@ -1,0 +1,37 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+          {
+            "field": "name",
+            "notLike": "rg-*"
+          },
+          {
+            "field": "name",
+            "notLike": "databricks-rg-*"
+          },
+          {
+            "field": "name",
+            "notLike": "synapseworkspace*"
+          },
+          {
+            "field": "name",
+            "notLike": "DefaultResourceGroup*"
+          },
+          {
+            "field": "name",
+            "notLike": "NetworkWatcher*"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {}
+  }

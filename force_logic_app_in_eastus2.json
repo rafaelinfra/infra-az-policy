@@ -1,0 +1,34 @@
+{
+    "mode": "Indexed",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Logic/workflows"
+          },
+          {
+            "field": "location",
+            "equals": "eastus"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "deny",
+          "Disabled"
+        ],
+        "defaultValue": "deny"
+      }
+    }
+  }

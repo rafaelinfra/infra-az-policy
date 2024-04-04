@@ -1,0 +1,34 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Batch/batchAccounts/pools"
+          },
+          {
+            "field": "Microsoft.Batch/batchAccounts/pools/vmSize",
+            "notEquals": "basic_a1"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "deny",
+          "Disabled"
+        ],
+        "defaultValue": "deny"
+      }
+    }
+  }
